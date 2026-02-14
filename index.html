@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Existence Checker</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>URL checker</h1>
+
+      <label for="urlInput">Enter URL:</label>
+      <input id="urlInput" placeholder="https://example.com/file.txt" />
+
+      <div class="box">
+        <div><b>Format:</b> <span id="formatStatus">-</span></div>
+        <div><b>Server check:</b> <span id="existStatus">-</span></div>
+      </div>
+
+      <p class="hint">
+        Tip: try <code>https://example.com/photos/</code> or
+        <code>https://example.com/file.pdf</code>
+      </p>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
