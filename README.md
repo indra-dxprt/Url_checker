@@ -1,6 +1,6 @@
 # URL Checker - Simple Browser Application
 
-This project is a simple browser-based application built using Javascript.  
+This project is a simple browser based application built using Javascript.  
 It allows a user to enter a URL and performs validation and existence checking in real time.
 
 ---
