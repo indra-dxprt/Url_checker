@@ -32,3 +32,9 @@ Both format validation and existence checks are triggered as the user types.
 
 However, the existence check is throttled to ensure that too many server requests are not made continuously on every keystroke.
 
+## How to run
+
+```bash
+npm install
+npm run dev
+
