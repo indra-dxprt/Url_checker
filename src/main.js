@@ -20,12 +20,15 @@ let lastRequestId = 0;
 async function doExistenceCheck(url) {
   const requestId = ++lastRequestId;
 
-  existStatus.textContent = "checking";
+  if (input.value.trim() === url) {
+    existStatus.textContent = "checking";
+  }
 
   const result = await checkUrlOnServer(url);
 
-  // If user typed more and a newer request started then ignore old results
   if (requestId !== lastRequestId) return;
+  if (input.value.trim() !== url) return;
+  if (!isValidUrlFormat(url)) return;
 
   if (!result.ok) {
     existStatus.textContent = "server error (fake)";
@@ -46,7 +49,9 @@ const throttledExistenceCheck = throttle((url) => {
 input.addEventListener("input", () => {
   const value = input.value.trim();
 
-  // reset stuff
+  lastRequestId++;
+  throttledExistenceCheck.cancel();
+
   if (!value) {
     formatStatus.textContent = "-";
     existStatus.textContent = "-";
@@ -57,12 +62,10 @@ input.addEventListener("input", () => {
 
   if (!okFormat) {
     formatStatus.textContent = "invalid (needs http/https)";
-    existStatus.textContent = "not checking server because format is wrong";
+    existStatus.textContent = "-";
     return;
   }
 
   formatStatus.textContent = "valid";
-
-
   throttledExistenceCheck(value);
 });
